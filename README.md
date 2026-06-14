@@ -1,41 +1,625 @@
-# 🏥 Smart Clinic Booking & Rekam Medis System
+# 🦷 Sistem Manajemen Klinik Gigi
 
-Aplikasi manajemen booking layanan kesehatan dan rekam medis klinik berbasis C++ yang dibangun secara modular. [cite_start]Proyek ini dibuat untuk memenuhi tugas Final Project mata kuliah Struktur Data[cite: 1063, 1081].
+## Deskripsi Proyek
 
-## 👥 Anggota Kelompok & Pembagian Tugas
-* [cite_start]**Anggota 1: Yoga Setia Triputra (25.11.6394)** - Penanggung Jawab CRUD, Struct, Array, dan Penulisan Laporan[cite: 424, 431, 488].
-* [cite_start]**Anggota 2: Alvin Nur Rohman (25.11.6362)** - Penanggung Jawab Queue, Evaluasi & Analisis, dan Penulisan Laporan[cite: 574, 1226].
-* [cite_start]**Anggota 3: Tarsisia Theodora Milly (25.11.6381)** - Penanggung Jawab Stack, Sorting, dan Penulisan Laporan[cite: 86, 177].
-* [cite_start]**Anggota 4: Bernardus Mariotanalan Wiharyanto (25.11.6352)** - Penanggung Jawab Searching, Quality Control (Pengecekan Fungsional Sistem)[cite: 174, 177].
-* [cite_start]**Anggota 5: Muhammad Zakiyuddin Ramadan (25.11.6386)** - Penanggung Jawab Linked List, Integrasi Sistem, dan Penulisan Laporan[cite: 91, 1063, 1081].
+Sistem Manajemen Klinik Gigi adalah program berbasis C++ yang dibuat untuk mengelola data pasien dengan menerapkan beberapa konsep Struktur Data, yaitu:
 
----
+- Struct
+- Array
+- Searching
+- Sorting
+- Queue
+- Stack
+- Linked List
 
-## 🛠️ Penerapan Struktur Data Sesuai Inti Materi
-[cite_start]Aplikasi ini menggunakan penyimpanan berbasis memori statis dan dinamis secara hibrida, serta menerapkan minimal 3 struktur data berbeda tanpa dependensi STL bawaan[cite: 33, 48]:
-
-1. [cite_start]**Array & Struct (Statis):** Digunakan oleh **Anggota 1** untuk mengelola data master paket layanan medis dan jadwal dokter aktif[cite: 19, 424, 431].
-2. **Database File Teks (`.txt` via fstream):** Digunakan oleh **Anggota 2** untuk menyimpan data pasien secara permanen dari RAM ke harddisk saat aplikasi ditutup, serta memuatnya kembali (*auto-load*) saat aplikasi dinyalakan.
-3. **Queue (Mekanisme Antrean):** Diimplementasikan secara manual oleh **Anggota 2** menggunakan prinsip FIFO (*First In First Out*) untuk mengelola pemanggilan antrean pasien dari ruang tunggu menuju kamar periksa dokter.
-4. [cite_start]**Stack (Mekanisme Fitur Undo):** Diimplementasikan secara manual oleh **Anggota 3** menggunakan prinsip LIFO (*Last In First Out*) untuk mengakomodasi pembatalan transaksi kasir atau *booking* terakhir yang keliru[cite: 86].
-5. [cite_start]**Sorting & Searching:** Diimplementasikan oleh **Anggota 3 & 4** untuk mengurutkan antrean klinik berdasarkan urgensi/jam kedatangan (*Sorting*) [cite: 177, 279][cite_start], serta mencari nomor rekam medis pasien secara sekuensial (*Searching*)[cite: 174, 177, 676].
-6. [cite_start]**Singly Linked List Non-Circular (Dinamis):** Diimplementasikan oleh **Anggota 5** menggunakan alokasi memori dinamis (`new TNode`) khusus untuk menampung riwayat rekam medis pasien yang fleksibel dan efisien memori[cite: 34, 36, 434, 437].
+Proyek ini dikerjakan secara berkelompok sehingga diperlukan pembagian tugas yang jelas agar tidak terjadi konflik saat pengembangan maupun proses merge.
 
 ---
 
-## 💻 Struktur Folder Proyek (Modular)
+# 📁 Struktur Folder
+
 ```text
-📂 klinik-booking-system/
+project/
 │
-├── 📂 src/                      --> File kode sumber C++ (.cpp)
-│   ├── main.cpp                 --> Menu Utama & Alur Sistem Terintegrasi
-│   ├── anggota1_crud.cpp        --> Modul CRUD Data Dokter & Layanan (Array)
-│   ├── anggota2_file.cpp        --> Modul Antrean Pasien (Queue) & File Handling
-│   ├── anggota3_stack.cpp       --> Modul Fitur Undo Transaksi (Stack) & Sorting
-│   └── anggota4_search.cpp      --> Modul Pencarian Rekam Medis (Searching)
+├── include/
+│   └── pasien.h
 │
-├── 📂 data/                     --> Database lokal berbasis file teks
-│   ├── data_master.txt          --> Basis data dokter dan paket layanan
-│   └── riwayat_booking.txt      --> Basis data antrean dan rekam medis pasien
+├── src/
+│   ├── crud.cpp
+│   ├── queue.cpp
+│   ├── stack.cpp
+│   ├── sorting.cpp
+│   ├── searching.cpp
+│   ├── linkedlist.cpp
+│   └── main.cpp
 │
-└── README.md                    --> Dokumentasi Utama Proyek
+└── README.md
+```
+
+---
+
+# 📌 File Acuan Bersama (pasien.h)
+
+Sebelum anggota mulai mengerjakan modul masing-masing, tim harus menyepakati file header utama yaitu:
+
+```cpp
+#ifndef PASIEN_H
+#define PASIEN_H
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Pasien {
+    string idPasien;
+    string nama;
+    int umur;
+    string nomorTelepon;
+};
+
+extern Pasien dataPasien[100];
+extern int jumlahPasien;
+
+// CRUD
+void tambahPasien();
+void tampilPasien();
+void editPasien();
+void hapusPasien();
+
+// Searching
+int cariPasienById(string idPasien);
+int cariPasienByNama(string nama);
+
+// Sorting
+void sortingNama();
+
+// Queue
+void enqueuePasien();
+void dequeuePasien();
+void tampilAntrian();
+
+// Stack
+void pushRiwayat(Pasien pasien);
+void tampilRiwayat();
+
+// Linked List
+void tambahNodePasien(Pasien pasien);
+void tampilLinkedList();
+
+#endif
+```
+
+---
+
+# 📌 Fungsi pasien.h
+
+File `pasien.h` berfungsi sebagai kontrak bersama antar anggota tim.
+
+Tujuannya agar seluruh anggota menggunakan:
+
+- Struct yang sama
+- Variabel global yang sama
+- Nama fungsi yang sama
+- Tipe data yang sama
+
+Sehingga saat proses merge tidak terjadi error karena perbedaan struktur program.
+
+---
+
+# 📌 Wajib Ditambahkan Pada Semua File .cpp
+
+Setiap file `.cpp` wajib menambahkan:
+
+```cpp
+#include "../include/pasien.h"
+```
+
+Contoh:
+
+```cpp
+#include "../include/pasien.h"
+
+void tampilPasien() {
+
+}
+```
+
+---
+
+# 📌 Kenapa Harus Include pasien.h?
+
+Tanpa include:
+
+```cpp
+Pasien pasien;
+```
+
+akan menghasilkan error:
+
+```text
+'Pasien' does not name a type
+```
+
+Karena compiler tidak mengetahui struct Pasien.
+
+Selain itu, fungsi seperti:
+
+```cpp
+cariPasienById();
+```
+
+juga tidak akan dikenali jika prototype fungsi tidak diambil dari `pasien.h`.
+
+---
+
+# 📌 Implementasi Struktur Data
+
+| Struktur Data | Implementasi dalam Sistem |
+|--------------|--------------------------|
+| Struct | Menyimpan data pasien (ID, nama, umur, nomor telepon) dalam satu objek. |
+| Array | Menyimpan seluruh data pasien yang terdaftar pada sistem. |
+| Searching | Digunakan untuk mencari pasien berdasarkan ID atau nama. |
+| Sorting | Digunakan untuk mengurutkan data pasien berdasarkan nama agar lebih rapi dan mudah dicari. |
+| Queue | Digunakan sebagai sistem antrean pasien dengan metode FIFO (First In First Out). |
+| Stack | Digunakan untuk menyimpan riwayat pasien yang telah dipanggil atau dilayani dengan metode LIFO (Last In First Out). |
+| Linked List | Digunakan untuk menyimpan daftar pasien yang telah selesai diperiksa secara dinamis. |
+
+---
+
+# 📌 Alur Sistem
+
+```text
+Registrasi Pasien
+       │
+       ▼
+   dataPasien[]
+       │
+       ├── Searching
+       │
+       ├── Sorting
+       │
+       └── Queue (Antrean Pasien)
+                 │
+                 ▼
+          Pasien Dipanggil
+                 │
+                 ▼
+        Stack (Riwayat)
+                 │
+                 ▼
+ Linked List (Pasien Selesai)
+```
+
+---
+
+# 📌 Pembagian Tugas Tim
+
+Sebelum mulai mengerjakan, setiap anggota wajib menggunakan:
+
+```cpp
+#include "../include/pasien.h"
+```
+
+Tujuannya agar seluruh anggota menggunakan struct, variabel global, dan deklarasi fungsi yang sama.
+
+---
+
+## Yoga — CRUD, Struct, Array
+
+**File:**
+
+```text
+crud.cpp
+```
+
+**Tanggung Jawab:**
+
+- Menyimpan data pasien utama
+- Menambah pasien
+- Menampilkan pasien
+- Mengedit pasien
+- Menghapus pasien
+
+**Function yang harus dibuat:**
+
+```cpp
+void tambahPasien();
+void tampilPasien();
+void editPasien();
+void hapusPasien();
+```
+
+**Kerangka File:**
+
+```cpp
+#include "../include/pasien.h"
+
+Pasien dataPasien[100];
+int jumlahPasien = 0;
+
+void tambahPasien() {
+
+}
+
+void tampilPasien() {
+
+}
+
+void editPasien() {
+
+}
+
+void hapusPasien() {
+
+}
+```
+
+**Catatan:**
+
+Variabel berikut hanya boleh dibuat satu kali.
+
+```cpp
+Pasien dataPasien[100];
+int jumlahPasien = 0;
+```
+
+File lain hanya menggunakan:
+
+```cpp
+extern Pasien dataPasien[100];
+extern int jumlahPasien;
+```
+
+---
+
+## Alan — Searching
+
+**File:**
+
+```text
+searching.cpp
+```
+
+**Tanggung Jawab:**
+
+- Mencari pasien berdasarkan ID
+- Mencari pasien berdasarkan nama
+
+**Function yang harus dibuat:**
+
+```cpp
+int cariPasienById(string idPasien);
+int cariPasienByNama(string nama);
+```
+
+**Kerangka File:**
+
+```cpp
+#include "../include/pasien.h"
+
+int cariPasienById(string idPasien) {
+
+}
+
+int cariPasienByNama(string nama) {
+
+}
+```
+
+---
+
+## Alvin — Queue
+
+**File:**
+
+```text
+queue.cpp
+```
+
+**Tanggung Jawab:**
+
+- Menambahkan pasien ke antrean
+- Memanggil pasien dari antrean
+- Menampilkan antrean
+
+**Function yang harus dibuat:**
+
+```cpp
+void enqueuePasien();
+void dequeuePasien();
+void tampilAntrian();
+```
+
+**Kerangka File:**
+
+```cpp
+#include "../include/pasien.h"
+#include <queue>
+
+queue<Pasien> antrian;
+
+void enqueuePasien() {
+
+}
+
+void dequeuePasien() {
+
+}
+
+void tampilAntrian() {
+
+}
+```
+
+---
+
+## Tasya — Sorting
+
+**File:**
+
+```text
+sorting.cpp
+```
+
+**Tanggung Jawab:**
+
+- Mengurutkan data pasien berdasarkan nama
+
+**Function yang harus dibuat:**
+
+```cpp
+void sortingNama();
+```
+
+**Kerangka File:**
+
+```cpp
+#include "../include/pasien.h"
+
+void sortingNama() {
+
+}
+```
+
+---
+
+## Tasya — Stack
+
+**File:**
+
+```text
+stack.cpp
+```
+
+**Tanggung Jawab:**
+
+- Menyimpan riwayat pasien yang telah dilayani
+
+**Function yang harus dibuat:**
+
+```cpp
+void pushRiwayat(Pasien pasien);
+void tampilRiwayat();
+```
+
+**Kerangka File:**
+
+```cpp
+#include "../include/pasien.h"
+#include <stack>
+
+stack<Pasien> riwayat;
+
+void pushRiwayat(Pasien pasien) {
+
+}
+
+void tampilRiwayat() {
+
+}
+```
+
+---
+
+## Zaky — Linked List
+
+**File:**
+
+```text
+linkedlist.cpp
+```
+
+**Tanggung Jawab:**
+
+- Menyimpan data pasien dalam linked list
+- Menampilkan data linked list
+
+**Function yang harus dibuat:**
+
+```cpp
+void tambahNodePasien(Pasien pasien);
+void tampilLinkedList();
+```
+
+**Kerangka File:**
+
+```cpp
+#include "../include/pasien.h"
+
+struct Node {
+
+    Pasien data;
+    Node* next;
+};
+
+Node* head = nullptr;
+
+void tambahNodePasien(Pasien pasien) {
+
+}
+
+void tampilLinkedList() {
+
+}
+```
+
+---
+
+## Zaky — Integrasi Sistem
+
+**File:**
+
+```text
+main.cpp
+```
+
+**Tanggung Jawab:**
+
+- Membuat menu utama
+- Menghubungkan seluruh modul
+- Mengintegrasikan program
+
+**Function yang harus dibuat:**
+
+```cpp
+void menuUtama();
+int main();
+```
+
+**Kerangka File:**
+
+```cpp
+#include "../include/pasien.h"
+
+void menuUtama() {
+
+}
+
+int main() {
+
+    menuUtama();
+}
+```
+
+---
+
+# 📌 Aturan Pengembangan
+
+## Tidak Boleh
+
+❌ Mengubah struct tanpa kesepakatan
+
+❌ Mengubah nama atribut struct
+
+❌ Mengubah nama fungsi yang telah disepakati
+
+❌ Membuat variabel global pasien baru
+
+❌ Menghapus kode anggota lain
+
+❌ Mengedit file anggota lain tanpa izin
+
+---
+
+## Wajib
+
+✅ Menggunakan `pasien.h`
+
+✅ Menggunakan struct yang sama
+
+✅ Menggunakan nama fungsi yang telah disepakati
+
+✅ Melakukan testing sebelum merge
+
+✅ Memberikan commit yang jelas
+
+---
+
+# 📌 Aturan GitHub
+
+Sebelum mulai mengerjakan:
+
+```bash
+git pull origin main
+```
+
+Setelah selesai:
+
+```bash
+git add .
+git commit -m "Menambahkan fitur"
+git push origin main
+```
+
+Disarankan menggunakan branch masing-masing:
+
+```bash
+git checkout -b feature-queue
+```
+
+Contoh:
+
+```text
+feature-crud
+feature-searching
+feature-sorting
+feature-stack
+feature-queue
+feature-linkedlist
+```
+
+---
+
+# 📌 Sebelum Merge
+
+Setiap anggota hanya mengerjakan file miliknya masing-masing.
+
+```text
+Yoga   → crud.cpp
+Alan   → searching.cpp
+Alvin  → queue.cpp
+Tasya  → sorting.cpp, stack.cpp
+Zaky   → linkedlist.cpp, main.cpp
+```
+
+Dengan cara ini kemungkinan konflik merge menjadi sangat kecil.
+
+---
+
+# 📌 Setelah Merge
+
+```text
+src/
+│
+├── crud.cpp
+├── queue.cpp
+├── stack.cpp
+├── sorting.cpp
+├── searching.cpp
+├── linkedlist.cpp
+└── main.cpp
+```
+
+Seluruh fungsi kemudian dipanggil dan diintegrasikan melalui:
+
+```cpp
+main.cpp
+```
+
+sebagai pusat jalannya program.
+
+---
+
+# 🎯 Tujuan Proyek
+
+Mengimplementasikan konsep:
+
+- Struct
+- Array
+- Searching
+- Sorting
+- Queue
+- Stack
+- Linked List
+
+ke dalam Sistem Manajemen Klinik Gigi dengan pembagian tugas yang jelas, kode yang terstruktur, dan proses integrasi yang minim konflik.

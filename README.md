@@ -676,7 +676,7 @@ git checkout feature-crud
 git checkout feature-searching
 git checkout feature-queue
 git checkout feature-sorting-stack
-git checkout feature-linkedlist-main
+git checkout feature-linkedlist-integrasi
 ```
 
 Jika branch belum tersedia di komputer lokal:

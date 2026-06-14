@@ -614,12 +614,34 @@ git branch -a
 
 Masuk ke branch sesuai tugas masing-masing:
 
-```text
-Yoga  → feature-crud-struct-array
-Alan  → feature-searching
-Alvin → feature-queue
-Tasya → feature-sorting-stack
-Zaky  → feature-linkedlist-integrasi
+
+```bash
+git fetch
+```
+
+Kemudian masuk ke branch sesuai tugas:
+
+```bash
+# Yoga
+git checkout -b feature-crud-struct-array origin/feature-crud-struct-array
+
+# Alan
+git checkout -b feature-searching origin/feature-searching
+
+# Alvin
+git checkout -b feature-queue origin/feature-queue
+
+# Tasya
+git checkout -b feature-sorting-stack origin/feature-sorting-stack
+
+# Zaky
+git checkout -b feature-linkedlist-integrasi origin/feature-linkedlist-integrasi
+```
+
+Jika branch sudah pernah dibuat di komputer lokal, cukup gunakan:
+
+```bash
+git checkout nama-branch
 ```
 
 ## 3. Simpan Perubahan

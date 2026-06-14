@@ -573,10 +573,25 @@ int main() {
 ✅ Memberikan commit yang jelas
 
 ---
-
 # 📌 Workflow GitHub
 
-## 1. Ambil Perubahan Terbaru
+## 1. Clone Repository
+
+Clone repository terlebih dahulu:
+
+```bash
+git clone https://github.com/YogaTriputra/klinik-booking-system.git
+```
+
+Masuk ke folder project:
+
+```bash
+cd klinik-booking-system
+```
+
+---
+
+## 2. Ambil Perubahan Terbaru
 
 Sebelum mulai bekerja, pastikan repository sudah versi terbaru.
 
@@ -586,107 +601,9 @@ git pull origin main
 
 ---
 
-## 2. Masuk ke Branch Masing-Masing
+## 3. Kerjakan File Sesuai Tugas
 
-Setiap anggota harus berpindah ke branch yang sesuai dengan tugasnya sebelum mulai bekerja.
-
-Daftar branch:
-
-```text
-Yoga  → feature-crud
-Alan  → feature-searching
-Alvin → feature-queue
-Tasya → feature-sorting-stack
-Zaky  → feature-linkedlist-main
-```
-
-Contoh:
-
-```bash
-git fetch
-```
-
-Lihat daftar branch yang tersedia:
-
-```bash
-git branch -a
-```
-
-Masuk ke branch sesuai tugas masing-masing:
-
-
-```bash
-git fetch
-```
-
-Kemudian masuk ke branch sesuai tugas:
-
-```bash
-# Yoga
-git checkout -b feature-crud-struct-array origin/feature-crud-struct-array
-
-# Alan
-git checkout -b feature-searching origin/feature-searching
-
-# Alvin
-git checkout -b feature-queue origin/feature-queue
-
-# Tasya
-git checkout -b feature-sorting-stack origin/feature-sorting-stack
-
-# Zaky
-git checkout -b feature-linkedlist-integrasi origin/feature-linkedlist-integrasi
-```
-
-Jika branch sudah pernah dibuat di komputer lokal, cukup gunakan:
-
-```bash
-git checkout nama-branch
-```
-
-## 3. Simpan Perubahan
-
-Setelah selesai mengerjakan fitur:
-
-```bash
-git add .
-git commit -m "Menambahkan fitur CRUD"
-```
-
-Gunakan pesan commit yang jelas sesuai fitur yang dikerjakan.
-
----
-
-## 4. Push ke GitHub
-
-Push ke branch masing-masing.
-
-Contoh:
-
-```bash
-git push origin feature-crud
-```
-
----
-
-## 5. Merge ke Branch Main
-
-Setelah fitur selesai dan telah diuji, branch dapat digabungkan ke branch `main`.
-
----
-
-## 6. Hindari Konflik
-
-- Jangan mengubah file anggota lain tanpa izin.
-- Jangan mengubah `pasien.h` tanpa persetujuan tim.
-- Lakukan `git pull` sebelum mulai bekerja.
-- Lakukan testing sebelum merge.
-
----
-
-# 📌 Sebelum Merge
-
-Setiap anggota hanya mengerjakan file miliknya masing-masing.
+Setiap anggota hanya mengerjakan file yang menjadi tanggung jawabnya.
 
 ```text
 Yoga   → crud.cpp
@@ -696,45 +613,38 @@ Tasya  → sorting.cpp, stack.cpp
 Zaky   → linkedlist.cpp, main.cpp
 ```
 
-Dengan cara ini kemungkinan konflik merge menjadi sangat kecil.
+---
+
+## 4. Simpan Perubahan
+
+Setelah selesai mengerjakan fitur:
+
+```bash
+git add .
+git commit -m "Menambahkan fitur"
+```
+
+Contoh:
+
+```bash
+git commit -m "Menambahkan fitur queue"
+```
 
 ---
 
-# 📌 Setelah Merge
+## 5. Upload ke GitHub
 
-```text
-src/
-│
-├── crud.cpp
-├── queue.cpp
-├── stack.cpp
-├── sorting.cpp
-├── searching.cpp
-├── linkedlist.cpp
-└── main.cpp
+Push perubahan ke repository.
+
+```bash
+git push origin main
 ```
-
-Seluruh fungsi kemudian dipanggil dan diintegrasikan melalui:
-
-```cpp
-main.cpp
-```
-
-sebagai pusat jalannya program.
 
 ---
 
-# 🎯 Tujuan Proyek
+## 6. Hindari Konflik
 
-Mengimplementasikan konsep:
-
-- Struct
-- Array
-- Pointer
-- Searching
-- Sorting
-- Queue
-- Stack
-- Linked List
-
-ke dalam Sistem Manajemen Klinik Gigi dengan pembagian tugas yang jelas, kode yang terstruktur, dan proses integrasi yang minim konflik.
+- Jangan mengubah file anggota lain tanpa izin.
+- Jangan mengubah `pasien.h` tanpa persetujuan tim.
+- Selalu lakukan `git pull origin main` sebelum mulai bekerja.
+- Lakukan testing sebelum melakukan push.

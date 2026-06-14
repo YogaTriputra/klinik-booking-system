@@ -156,72 +156,24 @@ juga tidak akan dikenali jika prototype fungsi tidak diambil dari `pasien.h`.
 
 # 📌 Implementasi Struktur Data
 
-| Struktur Data | Implementasi dalam Sistem |
-|--------------|--------------------------|
-| Struct | Menyimpan data pasien (ID, nama, umur, nomor telepon) dalam satu objek. |
-| Array | Menyimpan seluruh data pasien yang terdaftar pada sistem. |
-| Pointer | Digunakan pada Linked List untuk menghubungkan node dan memanipulasi data secara dinamis. |
-| Searching | Digunakan untuk mencari pasien berdasarkan ID atau nama. |
-| Sorting | Digunakan untuk mengurutkan data pasien berdasarkan nama agar lebih rapi dan mudah dicari. |
-| Queue | Digunakan sebagai sistem antrean pasien dengan metode FIFO (First In First Out). |
-| Stack | Digunakan untuk menyimpan riwayat pasien yang telah dipanggil atau dilayani dengan metode LIFO (Last In First Out). |
-| Linked List | Digunakan untuk menyimpan daftar pasien yang telah selesai diperiksa secara dinamis. |
+| Struktur Data | Implementasi |
+|--------------|-------------|
+| Struct | Menyimpan data pasien. |
+| Array | Menyimpan seluruh data pasien. |
+| Pointer | Digunakan pada Linked List (`Node* next`). |
+| Searching | Linear / Sequential Search berdasarkan ID atau nama. |
+| Sorting | Bubble Sort berdasarkan nama pasien (A-Z). |
+| Queue | FIFO (First In First Out). |
+| Stack | LIFO (Last In First Out). |
+| Linked List | Singly Linked List. |
 
-### Contoh Implementasi
+### Algoritma yang Digunakan
 
-**Queue (FIFO)**
-
-```text
-Andi masuk antrean
-Budi masuk antrean
-Citra masuk antrean
-```
-
-Urutan pemanggilan:
-
-```text
-Andi
-Budi
-Citra
-```
-
----
-
-**Stack (LIFO)**
-
-```text
-Andi diperiksa
-Budi diperiksa
-Citra diperiksa
-```
-
-Riwayat:
-
-```text
-TOP
-Citra
-Budi
-Andi
-```
-
----
-
-**Sorting**
-
-Sebelum:
-
-```text
-Budi
-Andi
-Citra
-```
-
-Sesudah:
-
-```text
-Andi
-Budi
-Citra
+- Searching → Linear / Sequential Search
+- Sorting → Bubble Sort (Ascending)
+- Queue → FIFO (First In First Out)
+- Stack → LIFO (Last In First Out)
+- Linked List → Singly Linked List
 ```
 
 ---

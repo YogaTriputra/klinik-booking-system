@@ -21,19 +21,28 @@ Proyek ini dikerjakan secara berkelompok sehingga diperlukan pembagian tugas yan
 # 📁 Struktur Folder
 
 ```text
-project/
+KLINIK-BOOKING-SYSTEM
+│
+├── Alan/
+│   └── searching.cpp
+│
+├── Alvin/
+│   └── queue.cpp
 │
 ├── include/
 │   └── pasien.h
 │
-├── src/
-│   ├── crud.cpp
-│   ├── queue.cpp
-│   ├── stack.cpp
+├── Tasya/
 │   ├── sorting.cpp
-│   ├── searching.cpp
-│   ├── linkedlist.cpp
-│   └── main.cpp
+│   └── stack.cpp
+│
+├── Yoga/
+│   └── crud.cpp
+│
+├── Zaky/
+│   └── linkedlist.cpp
+│
+├── main.cpp      ← FILE BERSAMA
 │
 └── README.md
 ```
@@ -505,7 +514,7 @@ digunakan sebagai implementasi Pointer untuk menghubungkan node pada Linked List
 
 ---
 
-## Zaky — Integrasi Sistem
+## Integrasi Sistem(Bersama)
 
 **File:**
 

@@ -603,14 +603,23 @@ Zaky  → feature-linkedlist-main
 Contoh:
 
 ```bash
-git checkout feature-crud
+git fetch
 ```
 
-Jika branch belum muncul di komputer lokal:
+Lihat daftar branch yang tersedia:
 
 ```bash
-git fetch
-git checkout -b feature-crud origin/feature-crud
+git branch -a
+```
+
+Masuk ke branch sesuai tugas masing-masing:
+
+```text
+Yoga  → feature-crud-struct-array
+Alan  → feature-searching
+Alvin → feature-queue
+Tasya → feature-sorting-stack
+Zaky  → feature-linkedlist-integrasi
 ```
 
 ## 3. Simpan Perubahan
@@ -652,47 +661,6 @@ Setelah fitur selesai dan telah diuji, branch dapat digabungkan ke branch `main`
 - Lakukan testing sebelum merge.
 
 ---
-
-# 📌 Cara Masuk ke Branch Masing-Masing
-
-Jika branch sudah dibuat, setiap anggota dapat berpindah ke branch yang sesuai dengan tugasnya.
-
-Lihat daftar branch:
-
-```bash
-git branch -a
-```
-
-Masuk ke branch:
-
-```bash
-git checkout nama-branch
-```
-
-Contoh:
-
-```bash
-git checkout feature-crud
-git checkout feature-searching
-git checkout feature-queue
-git checkout feature-sorting-stack
-git checkout feature-linkedlist-integrasi
-```
-
-Jika branch belum tersedia di komputer lokal:
-
-```bash
-git fetch
-git checkout -b nama-branch origin/nama-branch
-```
-
-Cek branch yang sedang digunakan:
-
-```bash
-git branch
-```
-
-Branch aktif akan ditandai dengan simbol `*`.
 
 # 📌 Sebelum Merge
 

@@ -586,28 +586,32 @@ git pull origin main
 
 ---
 
-## 2. Buat Branch Masing-Masing
+## 2. Masuk ke Branch Masing-Masing
 
-Setiap anggota bekerja pada branch sendiri untuk menghindari konflik saat pengembangan.
+Setiap anggota harus berpindah ke branch yang sesuai dengan tugasnya sebelum mulai bekerja.
+
+Daftar branch:
+
+```text
+Yoga  → feature-crud
+Alan  → feature-searching
+Alvin → feature-queue
+Tasya → feature-sorting-stack
+Zaky  → feature-linkedlist-main
+```
 
 Contoh:
 
 ```bash
-git checkout -b feature-crud
+git checkout feature-crud
 ```
 
-Daftar branch yang digunakan:
+Jika branch belum muncul di komputer lokal:
 
-```text
-feature-crud
-feature-searching
-feature-sorting
-feature-stack
-feature-queue
-feature-linkedlist
+```bash
+git fetch
+git checkout -b feature-crud origin/feature-crud
 ```
-
----
 
 ## 3. Simpan Perubahan
 
@@ -648,6 +652,47 @@ Setelah fitur selesai dan telah diuji, branch dapat digabungkan ke branch `main`
 - Lakukan testing sebelum merge.
 
 ---
+
+# 📌 Cara Masuk ke Branch Masing-Masing
+
+Jika branch sudah dibuat, setiap anggota dapat berpindah ke branch yang sesuai dengan tugasnya.
+
+Lihat daftar branch:
+
+```bash
+git branch -a
+```
+
+Masuk ke branch:
+
+```bash
+git checkout nama-branch
+```
+
+Contoh:
+
+```bash
+git checkout feature-crud
+git checkout feature-searching
+git checkout feature-queue
+git checkout feature-sorting-stack
+git checkout feature-linkedlist-main
+```
+
+Jika branch belum tersedia di komputer lokal:
+
+```bash
+git fetch
+git checkout -b nama-branch origin/nama-branch
+```
+
+Cek branch yang sedang digunakan:
+
+```bash
+git branch
+```
+
+Branch aktif akan ditandai dengan simbol `*`.
 
 # 📌 Sebelum Merge
 

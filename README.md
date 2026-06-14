@@ -589,6 +589,7 @@ int main() {
 }
 ```
 
+---
 # 📌 Aturan Pengembangan
 
 ## Tidak Boleh

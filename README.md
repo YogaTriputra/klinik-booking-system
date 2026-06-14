@@ -6,6 +6,8 @@ Sistem Manajemen Klinik Gigi adalah program berbasis C++ yang dibuat untuk menge
 
 - Struct
 - Array
+- Pointer
+- CRUD
 - Searching
 - Sorting
 - Queue
@@ -158,11 +160,69 @@ juga tidak akan dikenali jika prototype fungsi tidak diambil dari `pasien.h`.
 |--------------|--------------------------|
 | Struct | Menyimpan data pasien (ID, nama, umur, nomor telepon) dalam satu objek. |
 | Array | Menyimpan seluruh data pasien yang terdaftar pada sistem. |
+| Pointer | Digunakan pada Linked List untuk menghubungkan node dan memanipulasi data secara dinamis. |
 | Searching | Digunakan untuk mencari pasien berdasarkan ID atau nama. |
 | Sorting | Digunakan untuk mengurutkan data pasien berdasarkan nama agar lebih rapi dan mudah dicari. |
 | Queue | Digunakan sebagai sistem antrean pasien dengan metode FIFO (First In First Out). |
 | Stack | Digunakan untuk menyimpan riwayat pasien yang telah dipanggil atau dilayani dengan metode LIFO (Last In First Out). |
 | Linked List | Digunakan untuk menyimpan daftar pasien yang telah selesai diperiksa secara dinamis. |
+
+### Contoh Implementasi
+
+**Queue (FIFO)**
+
+```text
+Andi masuk antrean
+Budi masuk antrean
+Citra masuk antrean
+```
+
+Urutan pemanggilan:
+
+```text
+Andi
+Budi
+Citra
+```
+
+---
+
+**Stack (LIFO)**
+
+```text
+Andi diperiksa
+Budi diperiksa
+Citra diperiksa
+```
+
+Riwayat:
+
+```text
+TOP
+Citra
+Budi
+Andi
+```
+
+---
+
+**Sorting**
+
+Sebelum:
+
+```text
+Budi
+Andi
+Citra
+```
+
+Sesudah:
+
+```text
+Andi
+Budi
+Citra
+```
 
 ---
 
@@ -189,6 +249,26 @@ Registrasi Pasien
                  ▼
  Linked List (Pasien Selesai)
 ```
+
+# 📌 Rancangan Menu Utama
+
+```text
+=== SISTEM MANAJEMEN KLINIK GIGI ===
+
+1. Tambah Pasien
+2. Tampilkan Pasien
+3. Update Pasien
+4. Hapus Pasien
+5. Cari Pasien
+6. Urutkan Pasien
+7. Masuk Antrian
+8. Panggil Antrian
+9. Tampilkan Riwayat
+10. Tampilkan Data Linked List
+0. Keluar
+```
+
+Menu ini dibuat untuk memenuhi ketentuan Final Project yang mencakup CRUD, Searching, Sorting, Queue, Stack, dan Linked List.
 
 ---
 
@@ -431,8 +511,9 @@ linkedlist.cpp
 
 **Tanggung Jawab:**
 
-- Menyimpan data pasien dalam linked list
-- Menampilkan data linked list
+- Menyimpan data pasien dalam Linked List
+- Menampilkan data Linked List
+- Mengimplementasikan Pointer
 
 **Function yang harus dibuat:**
 
@@ -447,7 +528,6 @@ void tampilLinkedList();
 #include "../include/pasien.h"
 
 struct Node {
-
     Pasien data;
     Node* next;
 };
@@ -462,6 +542,14 @@ void tampilLinkedList() {
 
 }
 ```
+
+**Catatan:**
+
+```cpp
+Node* next;
+```
+
+digunakan sebagai implementasi Pointer untuk menghubungkan node pada Linked List.
 
 ---
 
@@ -501,8 +589,6 @@ int main() {
 }
 ```
 
----
-
 # 📌 Aturan Pengembangan
 
 ## Tidak Boleh
@@ -535,29 +621,29 @@ int main() {
 
 ---
 
-# 📌 Aturan GitHub
+# 📌 Workflow GitHub
 
-Sebelum mulai mengerjakan:
+## 1. Ambil Perubahan Terbaru
+
+Sebelum mulai bekerja, pastikan repository sudah versi terbaru.
 
 ```bash
 git pull origin main
 ```
 
-Setelah selesai:
+---
 
-```bash
-git add .
-git commit -m "Menambahkan fitur"
-git push origin main
-```
+## 2. Buat Branch Masing-Masing
 
-Disarankan menggunakan branch masing-masing:
-
-```bash
-git checkout -b feature-queue
-```
+Setiap anggota bekerja pada branch sendiri untuk menghindari konflik saat pengembangan.
 
 Contoh:
+
+```bash
+git checkout -b feature-crud
+```
+
+Daftar branch yang digunakan:
 
 ```text
 feature-crud
@@ -567,6 +653,46 @@ feature-stack
 feature-queue
 feature-linkedlist
 ```
+
+---
+
+## 3. Simpan Perubahan
+
+Setelah selesai mengerjakan fitur:
+
+```bash
+git add .
+git commit -m "Menambahkan fitur CRUD"
+```
+
+Gunakan pesan commit yang jelas sesuai fitur yang dikerjakan.
+
+---
+
+## 4. Push ke GitHub
+
+Push ke branch masing-masing.
+
+Contoh:
+
+```bash
+git push origin feature-crud
+```
+
+---
+
+## 5. Merge ke Branch Main
+
+Setelah fitur selesai dan telah diuji, branch dapat digabungkan ke branch `main`.
+
+---
+
+## 6. Hindari Konflik
+
+- Jangan mengubah file anggota lain tanpa izin.
+- Jangan mengubah `pasien.h` tanpa persetujuan tim.
+- Lakukan `git pull` sebelum mulai bekerja.
+- Lakukan testing sebelum merge.
 
 ---
 
@@ -616,6 +742,7 @@ Mengimplementasikan konsep:
 
 - Struct
 - Array
+- Pointer
 - Searching
 - Sorting
 - Queue

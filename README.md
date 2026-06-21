@@ -168,7 +168,7 @@ juga tidak akan dikenali jika prototype fungsi tidak diambil dari `pasien.h`.
 
 | Struktur Data | Implementasi |
 |--------------|-------------|
-| Struct | Menyimpan data pasien. | Struct | Menyimpan data pasien (ID, nama, umur, nomor telepon, dan jenis perawatan).
+| Struct | Menyimpan data pasien (ID, nama, umur, nomor telepon, dan jenis perawatan). |
 | Array | Menyimpan seluruh data pasien. |
 | Pointer | Digunakan pada Linked List (`Node* next`). |
 | Searching | Linear / Sequential Search berdasarkan ID atau nama. |

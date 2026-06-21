@@ -66,6 +66,7 @@ struct Pasien {
     string nama;
     int umur;
     string nomorTelepon;
+    string jenisPerawatan;
 };
 
 extern Pasien dataPasien[100];
@@ -167,7 +168,7 @@ juga tidak akan dikenali jika prototype fungsi tidak diambil dari `pasien.h`.
 
 | Struktur Data | Implementasi |
 |--------------|-------------|
-| Struct | Menyimpan data pasien. |
+| Struct | Menyimpan data pasien. | Struct | Menyimpan data pasien (ID, nama, umur, nomor telepon, dan jenis perawatan).
 | Array | Menyimpan seluruh data pasien. |
 | Pointer | Digunakan pada Linked List (`Node* next`). |
 | Searching | Linear / Sequential Search berdasarkan ID atau nama. |
@@ -213,6 +214,8 @@ Registrasi Pasien
 
 # 📌 Rancangan Menu Utama
 
+# 📌 Rancangan Menu Utama
+
 ```text
 === SISTEM MANAJEMEN KLINIK GIGI ===
 
@@ -229,10 +232,22 @@ Registrasi Pasien
 0. Keluar
 ```
 
+Saat memilih menu **Tambah Pasien**, pengguna juga akan memilih jenis perawatan yang diinginkan.
+
+```text
+Pilih Jenis Perawatan:
+
+1. Pemeriksaan Gigi
+2. Tambal Gigi
+3. Cabut Gigi
+4. Scaling Gigi
+5. Behel
+6. Pemutihan Gigi
+```
+
+Data jenis perawatan akan disimpan bersama data pasien dan dapat ditampilkan pada menu data pasien.
+
 Menu ini dibuat untuk memenuhi ketentuan Final Project yang mencakup CRUD, Searching, Sorting, Queue, Stack, dan Linked List.
-
----
-
 # 📌 Pembagian Tugas Tim
 
 Sebelum mulai mengerjakan, setiap anggota wajib menggunakan:
@@ -260,6 +275,8 @@ crud.cpp
 - Menampilkan pasien
 - Mengedit pasien
 - Menghapus pasien
+- Mengelola data jenis perawatan pasien
+- Mengimplementasikan Struct dan Array
 
 **Function yang harus dibuat:**
 
